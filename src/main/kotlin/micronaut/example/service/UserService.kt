@@ -1,6 +1,9 @@
 package micronaut.example.service
 
+import com.google.gson.Gson
+import com.mongodb.reactivestreams.client.MongoClient
 import micronaut.example.model.User
+import org.bson.Document
 import javax.inject.Singleton
 
 interface UserService {
@@ -8,8 +11,11 @@ interface UserService {
 }
 
 @Singleton
-class UserServiceImpl: UserService {
+class UserServiceImpl(val mongoClient: MongoClient): UserService {
     override fun getUserById(id: String): User {
-        return User("Miguel", "Angel", "Software Engineer", 25)
+        val user = User("1","Miguel", "Angel", "Software Engineer", 25)
+        val userJson = Gson().toJson(user)
+        mongoClient.getDatabase("exampledb").getCollection("user").insertOne(Document.parse(userJson))
+        return user
     }
 }
