@@ -4,13 +4,14 @@ import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import micronaut.example.model.User
 import micronaut.example.service.UserService
+import org.bson.Document
 
 @Controller("/api/users")
 class UserController(private val userService: UserService) {
 
     @Get
-    fun getUsers(): String {
-        return "Get users"
+    fun getUsers(): List<Document> {
+        return userService.getUsers().blockingGet()
     }
 
     @Get("/{userId}")
