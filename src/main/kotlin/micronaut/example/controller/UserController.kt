@@ -24,7 +24,6 @@ class UserController(private val userService: UserService) {
 
     @Post
     fun createUser(@Body user: User): HttpResponse<User> {
-        userService.createUser(user)
-        return created(user)
+        return created(userService.createUser(user))
     }
 }

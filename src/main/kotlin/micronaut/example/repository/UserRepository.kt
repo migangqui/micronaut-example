@@ -1,37 +1,39 @@
 package micronaut.example.repository
 
-import com.google.gson.Gson
 import com.mongodb.client.model.Filters.eq
 import com.mongodb.reactivestreams.client.MongoClient
 import com.mongodb.reactivestreams.client.MongoCollection
 import io.reactivex.Flowable
+import io.reactivex.Single
 import micronaut.example.model.User
-import micronaut.example.mongo.OperationSubscriber
-import org.bson.Document
 import org.bson.types.ObjectId
 import javax.inject.Singleton
 
 @Singleton
-class UserRepository(private val mongoClient: MongoClient, private val gson: Gson) : MongoRepository<User> {
+class UserRepository(private val mongoClient: MongoClient) : MongoRepository<User> {
     override fun getAll(): List<User> {
         val users = mutableListOf<User>()
         Flowable.fromPublisher(collection().find()).toList().blockingGet().forEach { user ->
-            users.add(gson.fromJson(user.toJson(), User::class.java))
+            println(user)
+            users.add(user)
         }
         return users
     }
 
     override fun getById(id: String): User {
-        val user = Flowable.fromPublisher(collection().find(eq("_id", ObjectId(id))).first()).toList().blockingGet()[0]
-        return gson.fromJson(user.toJson(), User::class.java)
+        return Flowable
+                .fromPublisher(
+                        collection().find(eq("_id", ObjectId(id))).first())
+                .toList().blockingGet()[0]
     }
 
-    override fun create(item: User) {
-        val userJson = gson.toJson(item)
-        collection().insertOne(Document.parse(userJson)).subscribe(OperationSubscriber())
+    override fun create(item: User): Single<User> {
+        return Single
+                .fromPublisher(collection().insertOne(item))
+                .map { success -> item }
     }
 
-    private fun collection(): MongoCollection<Document> {
-        return mongoClient.getDatabase("exampledb").getCollection("user")
+    private fun collection(): MongoCollection<User> {
+        return mongoClient.getDatabase("exampledb").getCollection("user", User::class.java)
     }
 }

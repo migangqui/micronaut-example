@@ -8,7 +8,7 @@ import javax.inject.Singleton
 interface UserService {
     fun getUsers(): List<User>
     fun getUserById(id: String): User
-    fun createUser(user: User)
+    fun createUser(user: User): User
 }
 
 @Singleton
@@ -21,7 +21,7 @@ class UserServiceImpl(private val userRepository: UserRepository) : UserService 
         return userRepository.getById(id)
     }
 
-    override fun createUser(user: User) {
-        userRepository.create(user)
+    override fun createUser(user: User): User {
+        return userRepository.create(user).blockingGet()
     }
 }
