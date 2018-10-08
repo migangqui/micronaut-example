@@ -29,6 +29,8 @@ class UserRepository(private val mongoClient: MongoClient) : MongoRepository<Use
         collection().insertOne(Document.parse(userJson))
     }
 
+    /* Private methods */
+
     private fun collection(): MongoCollection<Document> {
         return mongoClient.getDatabase("exampledb").getCollection("user")
     }
