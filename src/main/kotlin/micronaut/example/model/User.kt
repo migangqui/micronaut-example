@@ -1,3 +1,5 @@
 package micronaut.example.model
 
-data class User(val id: String, val name: String, val surname: String, val job: String, val age: Int)
+import org.bson.types.ObjectId
+
+data class User(val _id: ObjectId?, val name: String, val surname: String, val job: String, val age: Int)

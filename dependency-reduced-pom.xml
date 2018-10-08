@@ -241,6 +241,7 @@
     <kotlinVersion>1.2.61</kotlinVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <micronaut.version>1.0.0.RC1</micronaut.version>
+    <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
   </properties>
 </project>
 

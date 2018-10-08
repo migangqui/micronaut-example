@@ -1,33 +1,27 @@
 package micronaut.example.service
 
-import com.google.gson.Gson
-import com.mongodb.reactivestreams.client.MongoClient
-import com.mongodb.reactivestreams.client.MongoCollection
-import io.reactivex.Flowable
-import io.reactivex.Single
 import micronaut.example.model.User
-import org.bson.Document
+import micronaut.example.repository.UserRepository
 import javax.inject.Singleton
 
+
 interface UserService {
-    fun getUsers(): Single<List<Document>>
+    fun getUsers(): List<User>
     fun getUserById(id: String): User
+    fun createUser(user: User)
 }
 
 @Singleton
-class UserServiceImpl(val mongoClient: MongoClient): UserService {
-    override fun getUsers(): Single<List<Document>> {
-        return Flowable.fromPublisher(collection().find()).toList()
+class UserServiceImpl(private val userRepository: UserRepository) : UserService {
+    override fun getUsers(): List<User> {
+        return userRepository.getAll()
     }
 
     override fun getUserById(id: String): User {
-        val user = User("1","Miguel", "Angel", "Software Engineer", 25)
-        val userJson = Gson().toJson(user)
-        Flowable.fromPublisher(collection().insertOne(Document.parse(userJson)))
-        return user
+        return userRepository.getById(id)
     }
 
-    private fun collection(): MongoCollection<Document> {
-        return mongoClient.getDatabase("exampledb").getCollection("user")
+    override fun createUser(user: User) {
+        userRepository.create(user)
     }
 }

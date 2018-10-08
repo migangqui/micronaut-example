@@ -1,9 +1,7 @@
 micronaut:
     application:
         name: micronaut-example
+    server:
+        port: 8090
 mongodb:
     uri: mongodb://localhost:27017/exampledb
-
-#Uncomment to set server port
-#    server:
-#        port: 8080
