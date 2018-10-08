@@ -13,18 +13,17 @@ import micronaut.example.service.UserService
 class UserController(private val userService: UserService) {
 
     @Get
-    fun getUsers(): List<User> {
+    fun getUsers(): HttpResponse<List<User>> {
         return userService.getUsers()
     }
 
     @Get("/{userId}")
-    fun getUser(userId: String): User {
+    fun getUser(userId: String): HttpResponse<User> {
         return userService.getUserById(userId)
     }
 
     @Post
     fun createUser(@Body user: User): HttpResponse<User> {
-        userService.createUser(user)
-        return created(user)
+       return userService.createUser(user)
     }
 }
