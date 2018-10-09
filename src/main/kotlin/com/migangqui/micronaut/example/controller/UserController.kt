@@ -8,12 +8,13 @@ import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Post
 import com.migangqui.micronaut.example.model.User
 import com.migangqui.micronaut.example.service.UserService
+import io.reactivex.Single
 
 @Controller("/api/users")
 class UserController(private val userService: UserService) {
 
     @Get
-    fun getUsers(): List<User> {
+    fun getUsers(): Single<List<User>> {
         return userService.getUsers()
     }
 

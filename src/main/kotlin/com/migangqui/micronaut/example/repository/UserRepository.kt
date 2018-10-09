@@ -8,13 +8,14 @@ import io.reactivex.Single
 import com.migangqui.micronaut.example.model.User
 import com.migangqui.micronaut.example.property.MongoProperty
 import org.bson.types.ObjectId
+import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class UserRepository(private val mongoClient: MongoClient, private val mongoProperty: MongoProperty) : MongoRepository<User> {
-    override fun getAll(): List<User> {
+    override fun getAll(): Single<List<User>> {
         val users = mutableListOf<User>()
-        return Flowable.fromPublisher(collection().find()).toList().blockingGet()
+        return Flowable.fromPublisher(collection().find()).toList()
 //        return users
     }
 
