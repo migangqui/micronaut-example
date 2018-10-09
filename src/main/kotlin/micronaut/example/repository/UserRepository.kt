@@ -14,11 +14,8 @@ import javax.inject.Singleton
 class UserRepository(private val mongoClient: MongoClient, private val mongoProperty: MongoProperty) : MongoRepository<User> {
     override fun getAll(): List<User> {
         val users = mutableListOf<User>()
-        Flowable.fromPublisher(collection().find()).toList().blockingGet().forEach { user ->
-            println(user)
-            users.add(user)
-        }
-        return users
+        return Flowable.fromPublisher(collection().find()).toList().blockingGet()
+//        return users
     }
 
     override fun getById(id: String): User {
