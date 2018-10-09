@@ -1,4 +1,4 @@
-package micronaut.example.property
+package com.migangqui.micronaut.example.property
 
 import io.micronaut.context.annotation.ConfigurationProperties
 

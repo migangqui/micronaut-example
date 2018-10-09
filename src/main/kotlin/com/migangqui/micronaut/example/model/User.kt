@@ -1,4 +1,4 @@
-package micronaut.example.model
+package com.migangqui.micronaut.example.model
 
 import org.bson.types.ObjectId
 

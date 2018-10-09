@@ -1,12 +1,12 @@
-package micronaut.example.repository
+package com.migangqui.micronaut.example.repository
 
 import com.mongodb.client.model.Filters.eq
 import com.mongodb.reactivestreams.client.MongoClient
 import com.mongodb.reactivestreams.client.MongoCollection
 import io.reactivex.Flowable
 import io.reactivex.Single
-import micronaut.example.model.User
-import micronaut.example.property.MongoProperty
+import com.migangqui.micronaut.example.model.User
+import com.migangqui.micronaut.example.property.MongoProperty
 import org.bson.types.ObjectId
 import javax.inject.Singleton
 

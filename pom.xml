@@ -6,7 +6,7 @@
     <artifactId>micronaut-example</artifactId>
     <version>0.1</version>
     <properties>
-        <exec.mainClass>micronaut.example.Application</exec.mainClass>
+        <exec.mainClass>com.migangqui.micronaut.example.Application</exec.mainClass>
         <micronaut.version>1.0.0.RC1</micronaut.version>
         <jdk.version>1.8</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

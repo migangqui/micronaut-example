@@ -1,4 +1,4 @@
-package micronaut.example.repository
+package com.migangqui.micronaut.example.repository
 
 import io.reactivex.Single
 
