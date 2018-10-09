@@ -6,11 +6,12 @@ import com.mongodb.reactivestreams.client.MongoCollection
 import io.reactivex.Flowable
 import io.reactivex.Single
 import micronaut.example.model.User
+import micronaut.example.property.MongoProperty
 import org.bson.types.ObjectId
 import javax.inject.Singleton
 
 @Singleton
-class UserRepository(private val mongoClient: MongoClient) : MongoRepository<User> {
+class UserRepository(private val mongoClient: MongoClient, private val mongoProperty: MongoProperty) : MongoRepository<User> {
     override fun getAll(): List<User> {
         val users = mutableListOf<User>()
         Flowable.fromPublisher(collection().find()).toList().blockingGet().forEach { user ->
@@ -30,10 +31,10 @@ class UserRepository(private val mongoClient: MongoClient) : MongoRepository<Use
     override fun create(item: User): Single<User> {
         return Single
                 .fromPublisher(collection().insertOne(item))
-                .map { success -> item }
+                .map { item }
     }
 
     private fun collection(): MongoCollection<User> {
-        return mongoClient.getDatabase("exampledb").getCollection("user", User::class.java)
+        return mongoClient.getDatabase(mongoProperty.database).getCollection("user", User::class.java)
     }
 }
