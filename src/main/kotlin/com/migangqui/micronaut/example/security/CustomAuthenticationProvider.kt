@@ -1,21 +1,19 @@
 package com.migangqui.micronaut.example.security
 
-import io.micronaut.security.authentication.AuthenticationFailed
+import com.migangqui.micronaut.example.repository.UserRepository
+import java.util.Collections.emptyList
 import io.reactivex.Flowable
-import java.util.ArrayList
-import io.micronaut.security.authentication.UserDetails
 import io.micronaut.security.authentication.AuthenticationRequest
 import io.micronaut.security.authentication.AuthenticationResponse
 import org.reactivestreams.Publisher
 import io.micronaut.security.authentication.AuthenticationProvider
+import io.micronaut.security.authentication.UserDetails
 import javax.inject.Singleton
 
 
 @Singleton
-class AuthenticationProviderUserPassword : AuthenticationProvider {
+class CustomAuthenticationProvider(private val userRepository: UserRepository) : AuthenticationProvider {
     override fun authenticate(authenticationRequest: AuthenticationRequest<*, *>): Publisher<AuthenticationResponse> {
-        return if (authenticationRequest.identity == "user" && authenticationRequest.secret == "password") {
-            Flowable.just(UserDetails("user", ArrayList()))
-        } else Flowable.just(AuthenticationFailed())
+        return Flowable.just(UserDetails("user", listOf("user")))
     }
 }

@@ -61,7 +61,7 @@
         <!-- Security -->
         <dependency>
             <groupId>io.micronaut</groupId>
-            <artifactId>security</artifactId>
+            <artifactId>security-jwt</artifactId>
             <version>${micronaut.version}</version>
         </dependency>
         <dependency>
