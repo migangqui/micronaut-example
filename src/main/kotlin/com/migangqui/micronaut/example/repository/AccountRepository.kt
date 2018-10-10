@@ -3,6 +3,7 @@ package com.migangqui.micronaut.example.repository
 import com.migangqui.micronaut.example.model.Account
 import com.migangqui.micronaut.example.model.User
 import com.migangqui.micronaut.example.property.MongoProperty
+import com.mongodb.client.model.Filters.eq
 import com.mongodb.reactivestreams.client.MongoClient
 import com.mongodb.reactivestreams.client.MongoCollection
 import io.reactivex.Single
@@ -30,6 +31,10 @@ class AccountRepository(private val mongoClient: MongoClient, private val mongoP
 
     override fun deleteUser(id: String) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    fun getByUsername(username: String): Single<Account> {
+        return Single.fromPublisher(collection().find(eq("username", username)))
     }
 
     private fun collection(): MongoCollection<Account> {
