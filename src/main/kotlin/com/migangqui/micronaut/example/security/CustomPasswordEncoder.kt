@@ -9,6 +9,6 @@ class CustomPasswordEncoder: PasswordEncoder {
         return password
     }
     override fun matches(p0: String?, p1: String?): Boolean {
-        return true
+        return p0 == p1
     }
 }

@@ -81,6 +81,12 @@
             <artifactId>security-jwt</artifactId>
             <version>${micronaut.version}</version>
         </dependency>
+        <!-- Logging -->
+        <dependency>
+            <groupId>io.github.microutils</groupId>
+            <artifactId>kotlin-logging</artifactId>
+            <version>1.6.10</version>
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>

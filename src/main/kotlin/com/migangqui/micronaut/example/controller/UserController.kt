@@ -8,9 +8,11 @@ import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Post
 import com.migangqui.micronaut.example.model.User
 import com.migangqui.micronaut.example.service.UserService
+import io.micronaut.security.annotation.Secured
+import io.micronaut.security.rules.SecurityRule
 import javax.annotation.security.PermitAll
 
-@PermitAll
+@Secured(SecurityRule.IS_AUTHENTICATED)
 @Controller("/api/users")
 class UserController(private val userService: UserService) {
 

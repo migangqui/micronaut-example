@@ -13,6 +13,7 @@ AccountService {
 @Singleton
 class AccountServiceImpl(private val accountRepository: AccountRepository) : AccountService {
     override fun createAccount(account: Account): Account {
+        account.authorities = mutableListOf("USER")
         return accountRepository.create(account)
     }
 }

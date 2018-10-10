@@ -21,7 +21,7 @@ class CustomUserState(private val account: Account): UserState {
     }
 
     override fun getPassword(): String {
-        return ""
+        return account.password
     }
 
     override fun isAccountLocked(): Boolean {
