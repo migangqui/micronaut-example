@@ -58,6 +58,12 @@
             <artifactId>runtime</artifactId>
             <scope>compile</scope>
         </dependency>
+        <!-- Security -->
+        <dependency>
+            <groupId>io.micronaut</groupId>
+            <artifactId>security</artifactId>
+            <version>${micronaut.version}</version>
+        </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>

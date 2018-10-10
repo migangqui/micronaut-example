@@ -3,6 +3,12 @@ micronaut:
         name: micronaut-example
     server:
         port: 8090
+    security:
+        enabled: true
+endpoints:
+  beans:
+    enabled: true
+    sensitive: false
 mongodb:
     uri: mongodb://localhost:27017
     database: exampledb

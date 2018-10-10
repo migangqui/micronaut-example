@@ -5,9 +5,13 @@ import com.migangqui.micronaut.example.service.UserService
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.HttpResponse.*
 import io.micronaut.http.annotation.*
+import io.micronaut.security.annotation.Secured
+import io.micronaut.security.rules.SecurityRule
 import io.reactivex.Single
 
 @Controller("/api/users")
+@Secured(SecurityRule.IS_AUTHENTICATED)
+//@PermitAll
 class UserController(private val userService: UserService) {
 
     @Get
