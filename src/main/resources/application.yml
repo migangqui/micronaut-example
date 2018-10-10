@@ -1,7 +1,25 @@
 micronaut:
-    application:
-        name: micronaut-example
-    server:
-        port: 8090
+  application:
+    name: micronaut-example
+  server:
+    port: 8090
+  security:
+    enabled: true
+    endpoints:
+      login:
+        enabled: true
+    token:
+      jwt:
+        enabled: true
+        signatures:
+          secret:
+            generator:
+              secret: pleaseChangeThisSecretForANewOne
+              jws-algorithm: HS256
+endpoints:
+  beans:
+    enabled: true
+    sensitive: false
 mongodb:
-    uri: mongodb://localhost:27017/exampledb
+  uri: mongodb://localhost:27017
+  database: exampledb

@@ -1,4 +1,4 @@
-package micronaut.example.controller
+package com.migangqui.micronaut.example.controller
 
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.HttpResponse.created
@@ -6,9 +6,11 @@ import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Post
-import micronaut.example.model.User
-import micronaut.example.service.UserService
+import com.migangqui.micronaut.example.model.User
+import com.migangqui.micronaut.example.service.UserService
+import javax.annotation.security.PermitAll
 
+@PermitAll
 @Controller("/api/users")
 class UserController(private val userService: UserService) {
 

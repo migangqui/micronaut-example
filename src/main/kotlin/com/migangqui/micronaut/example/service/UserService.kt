@@ -1,8 +1,8 @@
-package micronaut.example.service
+package com.migangqui.micronaut.example.service
 
 import io.micronaut.http.HttpResponse
-import micronaut.example.model.User
-import micronaut.example.repository.UserRepository
+import com.migangqui.micronaut.example.model.User
+import com.migangqui.micronaut.example.repository.UserRepository
 import java.nio.file.attribute.UserPrincipalNotFoundException
 import javax.inject.Singleton
 
