@@ -8,6 +8,7 @@ import javax.inject.Singleton
 
 @Factory
 class MongoConfig {
+
     @Bean
     @Singleton
     fun mongoClient(): MongoClient {

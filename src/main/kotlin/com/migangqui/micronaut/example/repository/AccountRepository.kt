@@ -27,6 +27,6 @@ class AccountRepository(private val mongoClient: MongoClient, private val mongoP
     }
 
     private fun collection(): MongoCollection<Account> {
-        return mongoClient.getDatabase(mongoProperty.database).getCollection("account", Account::class.java)
+        return mongoClient.getDatabase("exampledb").getCollection("account", Account::class.java)
     }
 }
