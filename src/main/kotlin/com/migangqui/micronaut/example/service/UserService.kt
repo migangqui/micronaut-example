@@ -8,8 +8,10 @@ import javax.inject.Singleton
 
 interface UserService {
     fun getUsers(): Single<List<User>>
-    fun getUserById(id: String): User
-    fun createUser(user: User): User
+    fun getUserById(id: String): Single<User>
+    fun createUser(user: User): Single<User>
+    fun deleteUsers()
+    fun deleteUserById(id: String)
 }
 
 @Singleton
@@ -18,11 +20,19 @@ class UserServiceImpl(private val userRepository: UserRepository) : UserService 
         return userRepository.getAll()
     }
 
-    override fun getUserById(id: String): User {
+    override fun getUserById(id: String): Single<User> {
         return userRepository.getById(id)
     }
 
-    override fun createUser(user: User): User {
-        return userRepository.create(user).blockingGet()
+    override fun createUser(user: User): Single<User> {
+        return userRepository.create(user)
+    }
+
+    override fun deleteUsers() {
+        userRepository.deleteAll()
+    }
+
+    override fun deleteUserById(id: String) {
+        userRepository.deleteUser(id)
     }
 }
