@@ -4,11 +4,3 @@ This is an POC using microservice oriented JVM framework named Micronaut, that s
 differents languages as Kotlin, used in this case. Also it uses MongoDB as datasource.
 In this example Maven is the dependency manager, but it is posible use Gradle.
 Take a look Micronaut documentation: https://docs.micronaut.io/latest/guide/index.html
-
-## To run
-In order to run this project is necesary set up Mongo database and run the project:
-1. Use docker to run the database `docker run -p 27017:27017 -m some-mongo mongo:latest`
-2. Run maven command `./mvnw exec:exec`
-
-## Misc
-This branch is implemented with synchronous Mongo driver.
