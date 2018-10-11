@@ -1,4 +1,4 @@
-package example.micronaut;
+package com.migangqui.micronaut.example;
 
 import com.oracle.svm.core.annotate.Alias;
 import com.oracle.svm.core.annotate.RecomputeFieldValue;
