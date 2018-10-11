@@ -81,6 +81,11 @@
             <artifactId>security-jwt</artifactId>
             <version>${micronaut.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
         <!-- Logging -->
         <dependency>
             <groupId>io.github.microutils</groupId>
