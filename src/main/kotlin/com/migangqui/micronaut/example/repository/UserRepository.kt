@@ -8,7 +8,6 @@ import com.mongodb.client.model.Filters.eq
 import org.bson.types.ObjectId
 import javax.inject.Singleton
 
-@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 @Singleton
 class UserRepository(private val mongoClient: MongoClient, private val mongoProperty: MongoProperty) : MongoRepository<User> {
     override fun getAll(): List<User> {
