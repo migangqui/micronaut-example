@@ -15,7 +15,7 @@ micronaut:
         signatures:
           secret:
             generator:
-              secret: pleaseChangeThisSecretForANewOne
+              secret: OzndvivjzzPMwMgqcSOf
               jws-algorithm: HS256
 endpoints:
   beans:
