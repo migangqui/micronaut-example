@@ -1,8 +1,9 @@
 micronaut:
   application:
     name: micronaut-example
-  server:
-    port: 8090
+  ssl:
+    enabled: true
+    buildSelfSigned: true
   security:
     enabled: true
     endpoints:
