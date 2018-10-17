@@ -5,6 +5,6 @@ import io.micronaut.context.annotation.ConfigurationProperties
 @ConfigurationProperties("mongodb")
 class MongoProperty {
 
-    var database: String? = null
+    lateinit var database: String
 
 }
