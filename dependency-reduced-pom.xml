@@ -250,7 +250,7 @@
     <exec.mainClass>com.migangqui.micronaut.example.Application</exec.mainClass>
     <kotlinVersion>1.2.61</kotlinVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <micronaut.version>1.0.0.RC1</micronaut.version>
+    <micronaut.version>1.0.0.RC2</micronaut.version>
     <kotlin.version>1.2.71</kotlin.version>
     <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
   </properties>

@@ -7,7 +7,7 @@
     <version>0.1</version>
     <properties>
         <exec.mainClass>com.migangqui.micronaut.example.Application</exec.mainClass>
-        <micronaut.version>1.0.0.RC1</micronaut.version>
+        <micronaut.version>1.0.0.RC2</micronaut.version>
         <jdk.version>1.8</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlinVersion>1.2.61</kotlinVersion>
@@ -41,6 +41,11 @@
             <groupId>io.micronaut</groupId>
             <artifactId>http-server-netty</artifactId>
             <scope>compile</scope>
+        </dependency>
+        <!-- Eureka -->
+        <dependency>
+            <groupId>io.micronaut</groupId>
+            <artifactId>discovery-client</artifactId>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>

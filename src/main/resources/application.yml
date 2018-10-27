@@ -15,8 +15,13 @@ micronaut:
         signatures:
           secret:
             generator:
-              secret: OzndvivjzzPMwMgqcSOf
+              secret: OzndvivjzzPMwMgqcSOfuIVUYVYUYUvUYvUYv
               jws-algorithm: HS256
+eureka:
+  client:
+    registration:
+      enabled: false
+    defaultZone: "${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}"
 endpoints:
   beans:
     enabled: true
